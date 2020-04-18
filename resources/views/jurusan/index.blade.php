@@ -19,6 +19,7 @@
                     <div class="card-body">
                       <a href="/jurusan/tambah" class="btn btn-primary">Tambah Jurusan</a>
                         <a href="/jurusan/index" class="btn btn-primary">Kembali</a>
+                          <a href="/jurusan/export_excel" class="btn btn-success my-3" target="_blank">Export Excel</a>
                       </div>
                       <form method="GET" class="form-inline">
                     <form method="GET" class="form-inline">
@@ -57,6 +58,12 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                    <br/>
+                     Halaman : {{ $jurusan->currentPage() }} <br/>
+                     Jumlah Jurusan : {{ $jurusan->total() }} <br/>
+                      {{ $jurusan->links() }}
+
                 </div>
             </div>
         </div>

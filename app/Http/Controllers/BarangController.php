@@ -6,24 +6,36 @@ use App\Barang;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\User;
+<<<<<<< Updated upstream
 use App\Exports\BarangExport;
 use Maatwebsite\Excel\Facades\Excel;
+=======
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\BarangExport;
 
-class BarangController extends Controller
-{
-  public function index(Request $request){
-    $barang = Barang::all();
-    $user = User::all();
-    $data = Barang::when($request->searchInput, function($query) use($request){
-        $query->where('name', 'LIKE', '%'.$request->searchInput.'%');
-    });
-  return view('/barang/index', compact('barang', 'ruangan', 'user'));
-  }
+class BarangController extends Controller{
+
+  public function index(Request $request)
+  {
+   $barang = Barang::when($request->search, function ($query) use ($request) {
+       $query->where('name', 'LIKE', '%' . $request->search . '%');
+   })->paginate(5);
+
+   return view('barang.index', compact('barang'));
+}
+>>>>>>> Stashed changes
+
 
   public function export_excel()
   	{
+<<<<<<< Updated upstream
   		return Excel::download(new BarangExport, 'barang-'.date("Y-m-d").'.xlsx');
   	}
+=======
+  		return Excel::download(new BarangExport, date("Y-m-d").'-Data Barang'.'.xlsx');
+  	}
+
+>>>>>>> Stashed changes
 
   public function tambah(){
     return view('/barang/tambah');

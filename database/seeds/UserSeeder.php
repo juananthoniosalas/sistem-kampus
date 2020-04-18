@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Jurusan;
 
-class JurusanSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +10,6 @@ class JurusanSeeder extends Seeder
      * @return void
      */
      public function run(){
-          Factory(App\Jurusan::class,11)->create();
-      }
+           Factory(App\User::class,2)->create();
+       }
 }

@@ -4,7 +4,7 @@
 <section class="section">
 
   <div class="section-header">
-    <h1>Fakultas</h1>
+    <h1>Ruangan</h1>
   </div>
 
   <div class="section-body">
@@ -17,11 +17,11 @@
                         <h2 class="mb-0 site-logo">PROJECT</h2>
                     </div>
                     <div class="card-body">
-                      <a href="/fakultas/tambah" class="btn btn-primary">Tambah Jurusan</a>
-                        <a href="/fakultas/index" class="btn btn-primary">Kembali</a>
-                          <a href="/fakultas/export_excel" class="btn btn-success my-3" target="_blank">Export Excel</a>
+                      <a href="/ruangan/tambah" class="btn btn-primary">Tambah ruangan</a>
+                        <a href="/ruangan/index" class="btn btn-primary">Kembali</a>
+                          <a href="/ruangan/export_excel" class="btn btn-success my-3" target="_blank">Export Excel</a>
                       </div>
-
+                      <form method="GET" class="form-inline">
                     <form method="GET" class="form-inline">
                       <div class="form-group">
                         <input type="text" name="search" class="form-control" placeholder="Search" value="{{ request()->get('search') }}">
@@ -30,31 +30,30 @@
                         <button type="submit" class="btn btn-primary">Search</button>
                       </div>
                     </form>
-
-
                     <br><br>
-
-
+                    <br/>
                     <table class="table table-bordered table-hover table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">Nomor</th>
-                                <th scope="col">Nama Fakultas</th>
-                                <th scope="col">Code Fakultas</th>
-                                <th scope="col">Action</th>
+                                <th>Nomor</th>
+                                <th>Nama Ruangan</th>
+                                <th>Nama Jurusan</th>
+                                <th> Code Ruangan </th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            @foreach($fakultas as $no => $f)
-
+                            @foreach($ruangan as $no => $r)
                             <tr>
-                                <td>{{ ++$no + ($fakultas->currentPage()-1) * $fakultas->perPage() }}</td>
-                                <td>{{ $f->name }}</td>
-                                <td>{{ $f-> id}}</td>
+
+                                  <td>{{ ++$no + ($ruangan->currentPage()-1) * $ruangan->perPage() }}</td>
+                                <td>{{ $r->name }}</td>
+                                <td>{{ $r->jurusan->name }}</td>
+                                <td>{{ $r-> id}}</td>
                                 <td>
-                                  <a href="/fakultas/edit/{{ $f->id }}" class="btn btn-warning">Edit</a>
-                                  <a href="/fakultas/hapus/{{ $f->id }}" class="btn btn-danger">Hapus</a>
+                                  <a href="/ruangan/edit/{{ $r->id }}" class="btn btn-warning">Edit</a>
+                                  <a href="/barang/hapus/{{ $r->id }}" class="btn btn-danger" onclick="return confirm('Anda ingin menghapus Ruang {{ $r->name}} ?')">Delete</a></td>
                                 </td>
 
                             </tr>
@@ -63,13 +62,16 @@
                     </table>
 
                     <br/>
-	                   Halaman : {{ $fakultas->currentPage() }} <br/>
-	                   Jumlah Fakultas : {{ $fakultas->total() }} <br/>
-	                    {{ $fakultas->links() }}
+                     Halaman : {{ $ruangan->currentPage() }} <br/>
+                     Jumlah Ruangan : {{ $ruangan->total() }} <br/>
+                      {{ $ruangan->links() }}
+
                 </div>
             </div>
         </div>
-</div>
-</div>
-</div>
-@endsection
+      </div>
+    </div>
+  </div>
+
+    </section>
+    @endsection()

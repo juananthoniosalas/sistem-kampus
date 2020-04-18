@@ -19,9 +19,12 @@
                     <div class="card-body">
                       <a href="/barang/tambah" class="btn btn-primary">Tambah Barang</a>
                         <a href="/barang/index" class="btn btn-primary">Kembali</a>
+<<<<<<< Updated upstream
                         <a href="/barang/export_excel" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
+=======
+                        <a href="/barang/export_excel" class="btn btn-success my-3" target="_blank">Export Excel</a>
+>>>>>>> Stashed changes
                       </div>
-                      <form method="GET" class="form-inline">
                     <form method="GET" class="form-inline">
                       <div class="form-group">
                         <input type="text" name="searchInput" class="form-control" placeholder="Search" value="{{ request()->get('search') }}">
@@ -46,16 +49,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                          <?php $no = 0;?>
-                            @foreach($barang as $b)
+
+                            @foreach($barang as $no => $b)
                             <tr>
-                              <?php $no++ ;?>
-                                <td>{{ $no }}</td>
+
+                                <td>{{ ++$no + ($barang->currentPage()-1) * $barang->perPage() }}</td>
                                 <td>{{ $b->ruangan->name }}</td>
                                 <td>{{ $b->name }}</td>
                                 <td>{{ $b->total }}</td>
                                 <td>{{ $b->broken }}</td>
-                                <td>{{ $b->created_by }}</td>
+                                <td>{{ $b->user->name }}</td>
                                 <td>{{ $b->updated_by }}</td>
 
                                 <td>
@@ -68,7 +71,10 @@
                             @endforeach
                         </tbody>
                     </table>
-
+                    <br/>
+                     Halaman : {{ $barang->currentPage() }} <br/>
+                     Jumlah Barang : {{ $barang->total() }} <br/>
+                      {{ $barang->links() }}
                 </div>
             </div>
         </div>
