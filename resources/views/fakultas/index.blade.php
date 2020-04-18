@@ -19,9 +19,8 @@
                     <div class="card-body">
                       <a href="/fakultas/tambah" class="btn btn-primary">Tambah Jurusan</a>
                         <a href="/fakultas/index" class="btn btn-primary">Kembali</a>
-                          <a href="/fakultas/export_excel" class="btn btn-success my-3" target="_blank">Export Excel</a>
                       </div>
-
+                      <form method="GET" class="form-inline">
                     <form method="GET" class="form-inline">
                       <div class="form-group">
                         <input type="text" name="search" class="form-control" placeholder="Search" value="{{ request()->get('search') }}">
@@ -30,8 +29,6 @@
                         <button type="submit" class="btn btn-primary">Search</button>
                       </div>
                     </form>
-
-
                     <br><br>
 
 

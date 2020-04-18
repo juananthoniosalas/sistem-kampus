@@ -10,7 +10,12 @@ class FakultasSeeder extends Seeder
      *
      * @return void
      */
-     public function run(){
-          Factory(App\Fakultas::class,11)->create();
-      }
+    public function run()
+    {
+          $listFakultas = ['Filkom', 'Vokasi', 'Hukum'];
+
+          foreach ($listFakultas as $fakultas) {
+            Fakultas::create(['name' => $fakultas]);
+    }
+  }
 }
