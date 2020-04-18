@@ -4,20 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Jurusan;
+use App\Exports\JurusanExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class JurusanController extends Controller
 {
-  public function index(){
-    $jurusan = Jurusan::all();
-    return view('/jurusan/index', ['jurusan' => $jurusan]);
+  public function index(Request $request){
 
-    $jurusan = Jurusan::when($request->search, function($query) use($request){
-        $query->where('name', 'LIKE', '%'.$request->search);
-    })->get();
+       $jurusan = Jurusan::when($request->search, function ($query) use ($request) {
+           $query->where('name', 'LIKE', '%' . $request->search . '%');
+       })->paginate(5);
 
-    return view('jurusan.index', compact('data'));
-  }
 
+       return view('jurusan.index', compact('jurusan'));
+}
+public function export_excel()
+   {
+     return Excel::download(new JurusanExport, date("Y-m-d").'-Data Jurusan'.'.xlsx');
+   }
 
 
   public function tambah(){

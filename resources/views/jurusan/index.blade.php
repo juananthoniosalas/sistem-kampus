@@ -19,6 +19,7 @@
                     <div class="card-body">
                       <a href="/jurusan/tambah" class="btn btn-primary">Tambah Jurusan</a>
                         <a href="/jurusan/index" class="btn btn-primary">Kembali</a>
+                          <a href="/jurusan/export_excel" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
                       </div>
                       <form method="GET" class="form-inline">
                     <form method="GET" class="form-inline">
@@ -41,11 +42,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                          <?php $no = 0;?>
-                            @foreach($jurusan as $j)
+
+                            @foreach($jurusan as $no => $j)
                             <tr>
-                              <?php $no++ ;?>
-                                <td>{{ $no }}</td>
+
+                                <td>{{ ++$no + ($jurusan->currentPage()-1) * $jurusan->perPage() }}</td>
                                 <td>{{ $j->name }}</td>
                                 <td>{{ $j->fakultas->name }}</td>
                                 <td>
@@ -57,6 +58,10 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <br/>
+                  Halaman : {{ $jurusan->currentPage() }} <br/>
+                  Jumlah Jurusan : {{ $jurusan->total() }} <br/>
+                   {{ $jurusan->links() }}
                 </div>
             </div>
         </div>

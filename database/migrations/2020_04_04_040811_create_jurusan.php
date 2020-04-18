@@ -18,7 +18,6 @@ class CreateJurusan extends Migration
             $table->unsignedInteger('fakultas_id')->index();
             $table->string('name', 50);
             $table->timestamps();
-
             // $table->foreign('fakultas_id')->references('id')->on('fakultas')->onDelete('cascade');
         });
     }

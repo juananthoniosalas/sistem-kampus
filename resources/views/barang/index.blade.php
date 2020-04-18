@@ -46,16 +46,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                          <?php $no = 0;?>
-                            @foreach($barang as $b)
+
+                            @foreach($barang as $no => $b)
                             <tr>
-                              <?php $no++ ;?>
-                                <td>{{ $no }}</td>
+
+                                <td>{{ ++$no + ($barang->currentPage()-1) * $barang->perPage() }}</td>
                                 <td>{{ $b->ruangan->name }}</td>
                                 <td>{{ $b->name }}</td>
                                 <td>{{ $b->total }}</td>
                                 <td>{{ $b->broken }}</td>
-                                <td>{{ $b->created_by }}</td>
+                                <td>{{ $b->user->name }}</td>
                                 <td>{{ $b->updated_by }}</td>
 
                                 <td>
@@ -68,6 +68,10 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <br/>
+                  Halaman : {{ $barang->currentPage() }} <br/>
+                  Jumlah Barang : {{ $barang->total() }} <br/>
+                   {{ $barang->links() }}
 
                 </div>
             </div>

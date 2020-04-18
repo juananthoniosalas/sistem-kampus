@@ -10,6 +10,8 @@
               <li class="">
                 <a class="nav-link" href="/fakultas/index"><i class="far fa-square"></i> <span>Fakultas</span></a>
                 <a class="nav-link" href="/jurusan/index"><i class="far fa-square"></i> <span>Jurusan</span></a>
+                <a class="nav-link" href="/ruangan/index"><i class="far fa-square"></i> <span>Ruangan</span></a>
+                <a class="nav-link" href="/barang/index"><i class="far fa-square"></i> <span>Barang</span></a>
               </li>
           </ul>
         </aside>

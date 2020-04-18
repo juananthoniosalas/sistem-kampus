@@ -17,8 +17,9 @@
                         <h2 class="mb-0 site-logo">PROJECT</h2>
                     </div>
                     <div class="card-body">
-                      <a href="/fakultas/tambah" class="btn btn-primary">Tambah Jurusan</a>
+                      <a href="/fakultas/tambah" class="btn btn-primary">Tambah Fakultas</a>
                         <a href="/fakultas/index" class="btn btn-primary">Kembali</a>
+                          <a href="/fakultas/export_excel" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
                       </div>
                       <form method="GET" class="form-inline">
                     <form method="GET" class="form-inline">

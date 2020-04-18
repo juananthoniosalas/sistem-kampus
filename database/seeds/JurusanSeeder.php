@@ -10,12 +10,7 @@ class JurusanSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-          $listJurusan = ['Teknologi Informasi', 'Administrasi', 'Public Relation'];
-
-          foreach ($listJurusan as $jurusan) {
-            Jurusan::create(['name' => $jurusan]);
-    }
-  }
+     public function run(){
+             Factory(App\Jurusan::class,11)->create();
+         }
 }

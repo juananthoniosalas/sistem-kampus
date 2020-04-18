@@ -11,19 +11,19 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class BarangController extends Controller
 {
-  public function index(Request $request){
-    $barang = Barang::all();
-    $user = User::all();
-    $data = Barang::when($request->searchInput, function($query) use($request){
-        $query->where('name', 'LIKE', '%'.$request->searchInput.'%');
-    });
-  return view('/barang/index', compact('barang', 'ruangan', 'user'));
-  }
+  public function index(Request $request)
+    {
+     $barang = Barang::when($request->search, function ($query) use ($request) {
+         $query->where('name', 'LIKE', '%' . $request->search . '%');
+     })->paginate(5);
 
-  public function export_excel()
-  	{
-  		return Excel::download(new BarangExport, 'barang-'.date("Y-m-d").'.xlsx');
-  	}
+     return view('barang.index', compact('barang'));
+   }
+
+   public function export_excel()
+   {
+     return Excel::download(new BarangExport, date("Y-m-d").'-Data Barang'.'.xlsx');
+   }
 
   public function tambah(){
     return view('/barang/tambah');
