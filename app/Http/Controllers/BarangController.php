@@ -6,6 +6,7 @@ use App\Barang;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\User;
+use File;
 use App\Exports\BarangExport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -33,14 +34,21 @@ public function store(Request $request){
   $this->validate($request,[
     'ruangan_id' => 'required',
     'name' => 'required',
+    'file' => 'required|file|image|mimes:jpeg,png,jpg',
     'total' => 'required',
     'broken' => 'required',
-
   ]);
+
+
+    $gambar = 'barang-'.date('Ymdhis').'.'.$request->file->getClientOriginalExtension();
+    $request->file->move('imagee', $gambar);
+
+
 
     Barang::create([
     'ruangan_id' => $request->ruangan_id,
     'name' => $request->name,
+    'file' =>  $gambar,
     'total' => $request->total,
     'broken' => $request->broken,
     'created_by' => $request->created_by,
@@ -60,6 +68,7 @@ public function update($id, Request $request)
  $this->validate($request,[
    'ruangan_id' => 'required',
    'name' => 'required',
+   'file' => 'required|file|image|mimes:jpeg,png,jpg',
    'total' => 'required',
    'broken' => 'required',
    'created_by' => 'required',
@@ -69,6 +78,14 @@ public function update($id, Request $request)
  $barang = Barang::find($id);
  $barang->ruangan_id = $request->ruangan_id;
  $barang->name = $request->name;
+
+
+ if( $request->file){
+            $gambar = 'barang-'.date('Ymdhis').'.'.$request->file->getClientOriginalExtension();
+            $request->file->move('imagee', $gambar);
+            $barang->file = $gambar;
+        }
+
  $barang->total = $request->total;
  $barang->broken = $request->broken;
  $barang->created_by = $request->created_by;
@@ -76,11 +93,20 @@ public function update($id, Request $request)
  $barang->save();
  return redirect('/barang/index');
 }
+// if ($request->hasFile('image')){
+//   $file = $request->file('image');
+//   $nama_file = time()."_".$file->getClientOriginalName(); --> edit image
+//   $file->move($tujuan_upload,$nama_file);
+//   $tujuan_upload = 'imagee';
+// }
 
 public function delete($id)
 {
- $barang = Barang::find($id);
- $barang->delete();
- return redirect('/barang/index');
+  // hapus file
+	$barang = Barang::where('id',$id)->first();
+	File::delete('imagee/'.$barang->file);
+	// hapus data
+	Barang::where('id',$id)->delete();
+	return redirect()->back();
 }
 }

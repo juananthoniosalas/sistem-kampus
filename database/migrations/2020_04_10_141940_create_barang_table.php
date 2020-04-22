@@ -17,6 +17,7 @@ class CreateBarangTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('ruangan_id')->index();
             $table->string('name', 50);
+            $table->string('file');
             $table->unsignedInteger('total');
             $table->unsignedInteger('broken');
             $table->string('created_by', 255)->index();

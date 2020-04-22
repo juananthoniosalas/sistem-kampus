@@ -21,7 +21,7 @@
                     <br/>
                     <br/>
 
-                    <form method="post" action="/barang/store">
+                    <form method="post" action="/barang/store" enctype="multipart/form-data">
 
                         {{ csrf_field() }}
 
@@ -47,6 +47,16 @@
                                 </div>
                             @endif
 
+                        </div>
+
+                        <div class="form-group">
+                          <label>Foto Barang</label>
+                            <input type="file" name="file" class="form-control-file" placeholder="Foto Barang ..">
+                            @if($errors->has('file'))
+                                <div class="text-danger">
+                                    {{ $errors->first('file')}}
+                                </div>
+                            @endif
                         </div>
 
                         <div class="form-group">
@@ -78,7 +88,7 @@
                             <label>Created By</label>
                             <input type="text" name="created_by" class="form-control" placeholder="Created By .. " value="{{ Auth::user()->name }}" readonly hidden>
 
-                          
+
 
                         </div>
 

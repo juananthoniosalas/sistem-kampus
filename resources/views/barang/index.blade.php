@@ -21,8 +21,7 @@
                         <a href="/barang/index" class="btn btn-primary">Kembali</a>
                         <a href="/barang/export_excel" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
                       </div>
-                      <form method="GET" class="form-inline">
-                    <form method="GET" class="form-inline">
+                    <form method="GET" class="form-inline" enctype="multipart/form-data">
                       <div class="form-group">
                         <input type="text" name="searchInput" class="form-control" placeholder="Search" value="{{ request()->get('search') }}">
                       </div>
@@ -32,30 +31,32 @@
                     </form>
                     <br><br>
                     <br/>
+                    <div class="table-responsive-xl">
                     <table class="table table-bordered table-hover table-striped">
                         <thead>
                             <tr>
-                                <th>Nomor</th>
-                                <th>Nama Ruangan</th>
-                                <th>Nama Barang</th>
-                                <th>Total</th>
-                                <th>Jumlah Rusak</th>
-                                <th>Dibuat Oleh</th>
-                                <th>Diupdate Oleh</th>
-                                <th>Action</th>
+                                <th scope="col">Nomor</th>
+                                <th scope="col">Nama Ruangan</th>
+                                <th scope="col">Nama Barang</th>
+                                <th scope="col">Foto Barang</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Jumlah Rusak</th>
+                                <th scope="col">Dibuat Oleh</th>
+                                <th scope="col">Diupdate Oleh</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
 
                             @foreach($barang as $no => $b)
                             <tr>
-
                                 <td>{{ ++$no + ($barang->currentPage()-1) * $barang->perPage() }}</td>
                                 <td>{{ $b->ruangan->name }}</td>
                                 <td>{{ $b->name }}</td>
+                                <td><img width="100px" src="{{ url('/imagee/'.$b->file) }}"></td>
                                 <td>{{ $b->total }}</td>
                                 <td>{{ $b->broken }}</td>
-                                <td>{{ $b->user->name }}</td>
+                                <td>{{ $b->created_by }}</td>
                                 <td>{{ $b->updated_by }}</td>
 
                                 <td>
@@ -68,6 +69,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                  </div>
                     <br/>
                   Halaman : {{ $barang->currentPage() }} <br/>
                   Jumlah Barang : {{ $barang->total() }} <br/>

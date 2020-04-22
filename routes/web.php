@@ -21,6 +21,11 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('signout', ['as' => 'auth.signout', 'uses' => 'Auth\loginController@signout']);
 
+//route dashboard
+Route::get('dashboard', function () {
+	return view('dashboard');
+});
+
 Route::group(['middleware' => 'auth'], function(){
 
 Route::group(['middleware' => 'admin.only'], function(){

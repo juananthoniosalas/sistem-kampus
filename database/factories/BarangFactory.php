@@ -20,6 +20,7 @@ $factory->define(Barang::class, function (Faker $faker) {
     return [
 				'ruangan_id' => $faker->numberBetween($min = 1, $max = 7),
       	'name' => $faker->unique()->randomElement($list_barang),
+				'file' => 'img/accountt.png',
         'total' => $faker->numberBetween($min = 3, $max = 7),
         'broken' => $faker->numberBetween($min = 1, $max = 3),
         'created_by' => $faker->numberBetween($min = 1, $max = 3),

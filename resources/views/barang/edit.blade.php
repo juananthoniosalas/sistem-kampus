@@ -22,7 +22,7 @@
                     <br/>
 
 
-                      <form method="post" action="/barang/update/{{ $barang->id }}">
+                      <form method="post" action="/barang/update/{{ $barang->id }}" enctype="multipart/form-data">
 
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
@@ -46,6 +46,18 @@
                             @if($errors->has('name'))
                                 <div class="text-danger">
                                     {{ $errors->first('name')}}
+                                </div>
+                            @endif
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>File</label>
+                            <input type="file" name="file" class="form-control-file"  value=" {{ $barang->file }}">
+
+                            @if($errors->has('file'))
+                                <div class="text-danger">
+                                    {{ $errors->first('file')}}
                                 </div>
                             @endif
 

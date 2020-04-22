@@ -57,7 +57,7 @@
           <li><a href="#schedule">Schedule</a></li>
           <li><a href="#venue">Venue</a></li>
           <li><a href="#hotels">Hotels</a></li>-->
-          <li><a href="/fakultas/index">Halaman Admin</a></li>
+          <li><a href="/dashboard">Halaman Admin</a></li>
           <li><a href="/barang/index">Halaman Staff</a></li>
             <!-- <li class="buy-tickets"><a href="#buy-tickets">Buy Tickets</a></li> -->
           @guest
