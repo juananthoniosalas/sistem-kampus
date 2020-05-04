@@ -18,10 +18,10 @@
                     </div>
                     <div class="card-body">
                       <a href="/jurusan/tambah" class="btn btn-primary">Tambah Jurusan</a>
-                        <a href="/jurusan/index" class="btn btn-primary">Kembali</a>
+
                           <a href="/jurusan/export_excel" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
                       </div>
-                      <form method="GET" class="form-inline">
+                  
                     <form method="GET" class="form-inline">
                       <div class="form-group">
                         <input type="text" name="search" class="form-control" placeholder="Search" value="{{ request()->get('search') }}">

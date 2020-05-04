@@ -12,16 +12,16 @@
 	<title>Typefolio</title>
 	<meta name="description" content=".">
 	<meta name="author" content="">
-	
+
 	<!-- Mobile Specific Metas
 	================================================== -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	
+
 	<!-- CSS Files
 	* cssreset-min.css 			- CSS reset
 	* typegrid.css				- Responsive grid system
 	* style.css					- Main CSS file
-	
+
 	Original LESS Stylesheet
 	<link rel="stylesheet/less" type="text/css" href="css/style.less" />
 	================================================== -->
@@ -30,7 +30,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css')}}">
 
 
-		
+
 	<!--[if lt IE 8]>
 		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"></script>
 	<![endif]-->
@@ -82,7 +82,7 @@
 
 	<!-- JS
 	================================================== -->
-	<!-- 
+	<!--
 		Flexslider 2.1 has known issues of manualControls setting with jQuery 1.9~
 		Use jQuery 1.8 until Flexslider 2.2 stable version is released
 	-->

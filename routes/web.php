@@ -16,7 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('dashboard');
 
-
+Route::get('/kirimemail','CobaEmailController@index');
 
 Auth::routes();
 Route::get('signout', ['as' => 'auth.signout', 'uses' => 'Auth\loginController@signout']);
