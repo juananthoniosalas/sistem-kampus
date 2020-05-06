@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Fakultas;
 use App\Exports\FakultasExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\FakultasImport;
+
 class FakultasController extends Controller
 {
 
@@ -26,6 +28,20 @@ return view('fakultas.index', compact('fakultas'));
    public function export_excel()
   {
     return Excel::download(new FakultasExport, date("Y-m-d").'-Data Fakultas'.'.xlsx');
+  }
+
+  public function import(Request $request)
+  {
+      $this->validate($request, [
+          'file' => 'required|mimes:csv,xls,xlsx'
+      ]);
+
+      $file = $request->file('file');
+      $filename = rand().$file->getClientOriginalName();
+      $file->move('uploads/Fakultas/',$filename);
+      Excel::import(new FakultasImport, public_path('uploads/Fakultas/'.$filename));
+
+      return redirect('/fakultas/index')  ;
   }
 
    public function store(Request $request){

@@ -18,7 +18,6 @@
                     </div>
                     <div class="card-body">
                       <a href="/barang/tambah" class="btn btn-primary">Tambah Barang</a>
-                        <a href="/barang/index" class="btn btn-primary">Kembali</a>
                         <a href="/barang/export_excel" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
                       </div>
                     <form method="GET" class="form-inline" enctype="multipart/form-data">

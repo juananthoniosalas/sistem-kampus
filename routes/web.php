@@ -25,10 +25,10 @@ Route::get('signout', ['as' => 'auth.signout', 'uses' => 'Auth\loginController@s
 Route::get('dashboard', function () {
 	return view('dashboard');
 });
-
 Route::group(['middleware' => 'auth'], function(){
 
 Route::group(['middleware' => 'admin.only'], function(){
+  Route::get('/dashboard', 'DashboardController@dashboard');
 //route fakultas
 Route::get('/fakultas/index', 'FakultasController@index');
 Route::get('/fakultas/tambah', 'FakultasController@tambah');
@@ -37,6 +37,7 @@ Route::get('/fakultas/edit/{id}', 'FakultasController@edit');
 Route::put('/fakultas/update/{id}', 'FakultasController@update');
 Route::get('/fakultas/hapus/{id}', 'FakultasController@delete');
 Route::get('/fakultas/export_excel', 'FakultasController@export_excel');
+Route::post('/fakultas/import', 'FakultasController@import');
 
 //route jurusan
 Route::get('/jurusan/index', 'JurusanController@index');
@@ -58,6 +59,8 @@ Route::get('/ruangan/hapus/{id}', 'RuanganController@delete');
 Route::get('/ruangan/cari','RuanganController@cari');
 Route::get('/ruangan/export_excel', 'RuanganController@export_excel');
 Route::get('/barang/tambah', 'BarangController@tambah');
+
+
     });
 
 //route Barang

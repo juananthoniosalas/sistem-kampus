@@ -18,10 +18,39 @@
                     </div>
                     <div class="card-body">
                       <a href="/fakultas/tambah" class="btn btn-primary">Tambah Fakultas</a>
-                        <a href="/fakultas/index" class="btn btn-primary">Kembali</a>
-                          <a href="/fakultas/export_excel" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
+                      <a href="/fakultas/export_excel" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
+                      <button type="button" class="btn btn-primary mr-5" data-toggle="modal" data-target="#importExcel">
+			                     IMPORT EXCEL
+		                   </button>
                       </div>
-                      <form method="GET" class="form-inline">
+
+                      <!-- Import Excel -->
+              		<div class="modal fade" id="importExcel" tabindex="-1" data-backdrop="false" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              			<div class="modal-dialog" role="document">
+              				<form method="post" action="{{ url('/fakultas/import') }}" enctype="multipart/form-data">
+              					<div class="modal-content">
+              						<div class="modal-header">
+              							<h5 class="modal-title" id="exampleModalLabel">Import Excel</h5>
+              						</div>
+              						<div class="modal-body">
+
+              							{{ csrf_field() }}
+
+              							<label>Pilih file excel</label>
+              							<div class="form-group">
+              								<input type="file" name="file" required="required" name="excel" accept=".xls, .xlsx">
+              							</div>
+
+              						</div>
+              						<div class="modal-footer">
+              							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              							<button type="submit" class="btn btn-primary">Import</button>
+              						</div>
+              					</div>
+              				</form>
+              			</div>
+              		</div>
+
                     <form method="GET" class="form-inline">
                       <div class="form-group">
                         <input type="text" name="search" class="form-control" placeholder="Search" value="{{ request()->get('search') }}">
