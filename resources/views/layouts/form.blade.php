@@ -4,7 +4,7 @@
 	<title>@yield('title', 'title')</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="{{asset('assets3/images/icons/sens.png')}}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('assets3/vendor/bootstrap/css/bootstrap.min.css')}}">
@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('assets3/fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('assets3/vendor/animate/animate.css')}}">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('assets3/vendor/css-hamburgers/hamburgers.min.css')}}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('assets3/vendor/select2/select2.min.css')}}">
@@ -20,12 +20,15 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('assets3/css/util.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets3/css/main.css')}}">
 <!--===============================================================================================-->
+<link rel="shortcut icon" href="iamges/favicon.ico">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+@laravelPWA
 </head>
 <body>
 
 	@yield('form')
 
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<script src="{{asset('assets3/vendor/jquery/jquery-3.2.1.min.js')}}"></script>
 <!--===============================================================================================-->
 	<script src="{{asset('assets3/vendor/bootstrap/js/popper.js')}}"></script>

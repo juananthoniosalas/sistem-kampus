@@ -13,6 +13,9 @@
         <link href="{{ asset('css/mainstyle.css') }}" rel="stylesheet">
         <link href="{{ asset('vendor/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
         <link href="{{ asset('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700&display=swap') }}" rel="stylesheet">
+        <link rel="shortcut icon" href="iamges/favicon.ico">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+        @laravelPWA
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
